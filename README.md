@@ -1,1 +1,1 @@
-# electron-alura
+# noteapp-electron
