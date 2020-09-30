@@ -1,0 +1,23 @@
+{
+  "name": "noteapp-electron",
+  "version": "1.0.0",
+  "description": "NoteApp with electron js.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ./main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barbosadev/noteapp-electron.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barbosadev/noteapp-electron/issues"
+  },
+  "homepage": "https://github.com/barbosadev/noteapp-electron#readme",
+  "dependencies": {
+    "electron": "^10.1.3"
+  }
+}

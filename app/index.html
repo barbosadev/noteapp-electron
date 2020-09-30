@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Note App</title>
+  <link rel="stylesheet" href="css/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div id="app">
+    <div class="menuoptions" id="menuoptions">
+      <svg onclick="mudaDisplay()" class="xis" width="19" height="19" viewBox="0 0 19 19" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M15.2717 1.13134C15.8964 0.506574 16.9094 0.506574 17.5342 1.13134C18.1589 1.75611 18.1589 2.76905 17.5342 3.39382L3.39366 17.5343C2.76889 18.1591 1.75595 18.1591 1.13118 17.5343C0.506413 16.9096 0.506413 15.8966 1.13118 15.2718L15.2717 1.13134Z"
+          fill="#E4E4E4" />
+        <path
+          d="M1.13117 3.39377C0.506406 2.76901 0.506406 1.75606 1.13117 1.13129C1.75594 0.506528 2.76889 0.506528 3.39365 1.13129L17.5342 15.2718C18.1589 15.8966 18.1589 16.9095 17.5342 17.5343C16.9094 18.159 15.8964 18.159 15.2717 17.5343L1.13117 3.39377Z"
+          fill="#E4E4E4" />
+      </svg>
+
+      <ul>
+        <li onclick="saveLocal()">Salvar em LocalStorage</li>
+        <li onclick="resetaTxt()">Zerar conteúdo</li>
+        <li onclick="copiarTxt()">Copiar contéudo</li>
+        <li>Alternar tema
+          <label class="switch">
+            <input onclick="mudaTema()" type="checkbox" id="checktema">
+            <span class="slider round"></span>
+          </label>
+        </li>
+        <li><a href="#" id='link-sobre'>
+            Sobre
+            <svg xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 0 24 24" width="15">
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path
+                d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
+            </svg>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+    <div class="textarea" spellcheck="false" contenteditable="" id="textarea" onkeydown="permiteTab(   )"
+      onfocus="tiraDisplay()" onload="loadLocal();"></div>
+    <div class="menu">
+      <ul>
+        <li><button onclick="executaComando('formatBlock',false,'h2')" title="Title/Titulo"><svg
+              xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+              <path d="M5 4v3h5.5v12h3V7H19V4z" />
+              <path d="M0 0h24v24H0V0z" fill="none" /></svg></button></li>
+        <li><button onclick="executaComando('bold') " title="Bold/negrito"><svg xmlns="http://www.w3.org/2000/svg"
+              height="24" viewBox="0 0 24 24" width="24">
+              <path
+                d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z" />
+              <path d="M0 0h24v24H0z" fill="none" /></svg></button></li>
+        <li><button onclick="executaComando('italic')" title="Italic/Italico"><svg xmlns="http://www.w3.org/2000/svg"
+              height="24" viewBox="0 0 24 24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z" /></svg></button></li>
+        <li><button onclick="executaComando('HiliteColor', false, hlcolor) " title="Highlight"><svg
+              xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24"
+              width="24">
+              <g>
+                <rect fill="none" height="24" width="24" />
+              </g>
+              <g>
+                <g>
+                  <g>
+                    <path
+                      d="M6,14l3,3v5h6v-5l3-3V9H6V14z M11,2h2v3h-2V2z M3.5,5.88l1.41-1.41l2.12,2.12L5.62,8L3.5,5.88z M16.96,6.59l2.12-2.12 l1.41,1.41L18.38,8L16.96,6.59z" />
+                  </g>
+                </g>
+              </g>
+            </svg></button></li>
+        <li><button onclick="executaComando('justifyLeft')" title="Justify Left"><svg xmlns="http://www.w3.org/2000/svg"
+              height="24" viewBox="0 0 24 24" width="24">
+              <path d="M15 15H3v2h12v-2zm0-8H3v2h12V7zM3 13h18v-2H3v2zm0 8h18v-2H3v2zM3 3v2h18V3H3z" />
+              <path d="M0 0h24v24H0z" fill="none" /></svg></button></li>
+        <li><button onclick="executaComando('justifyCenter')" title="Justify Center"><svg
+              xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+              <path d="M7 15v2h10v-2H7zm-4 6h18v-2H3v2zm0-8h18v-2H3v2zm4-6v2h10V7H7zM3 3v2h18V3H3z" />
+              <path d="M0 0h24v24H0z" fill="none" /></svg></button></li>
+        <li><button onclick="executaComando('insertUnorderedList')" title="Lista"><svg
+              xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+              <path
+                d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5 1.5-.68 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z" />
+              <path d="M0 0h24v24H0V0z" fill="none" /></svg></button></li>
+      </ul>
+    </div>
+  </div>
+  <a onclick="mudaDisplay()" id="configicon" class="configicon"><svg xmlns="http://www.w3.org/2000/svg" height="24"
+      viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path
+        d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.09-.16-.26-.25-.44-.25-.06 0-.12.01-.17.03l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.06-.02-.12-.03-.18-.03-.17 0-.34.09-.43.25l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.09.16.26.25.44.25.06 0 .12-.01.17-.03l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.06.02.12.03.18.03.17 0 .34-.09.43-.25l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-1.98-1.71c.04.31.05.52.05.73 0 .21-.02.43-.05.73l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43c-.43-.18-.83-.41-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
+    </svg></a>
+  <script src="js/renderer.js" type="module"></script>
+  <script src="js/index.js"></script>
+  </div>
+</body>
+
+</html>
