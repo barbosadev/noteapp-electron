@@ -3,8 +3,8 @@ let mainWindow = null;
 app.on('ready', () => {
   console.log('Aplicação Iniciada!');
   mainWindow = new BrowserWindow({
-    width: 600,
-    height: 400,
+    width: 1240,
+    height: 800,
     webPreferences: {
       nodeIntegration: true
     }
